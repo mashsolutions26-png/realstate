@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Details — Nestoria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg></span>
+      <span><span class="brand-text-line1">Nestoria</span><br><span class="brand-text-line2">Live Elevated</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="listings.html">Listings</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="nav-actions" id="navAuthSlot" style="gap:10px;"></div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="index.html">Home</a>
+    <a href="listings.html">Listings</a>
+    <a href="favorites.html">Favorites</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div id="mobileAuthSlot" style="display:flex;flex-direction:column;"></div>
+  </div>
+</header>
+
+<section class="section" id="pdRoot">
+  <div class="container">
+    <div class="pd-gallery" id="pdGallery"></div>
+
+    <div class="pd-layout">
+      <div>
+        <div class="pd-header" id="pdHeader"></div>
+        <div class="pd-specs" id="pdSpecs"></div>
+        <h3 style="font-size:18px;margin-bottom:10px;">About this property</h3>
+        <p id="pdDescription"></p>
+      </div>
+
+      <div>
+        <div class="pd-sidebar-card" id="pdPriceBox"></div>
+        <div class="pd-sidebar-card">
+          <div id="pdAgent"></div>
+          <h4 style="font-size:15px;margin-bottom:14px;">Contact Agent</h4>
+          <form id="inquiryForm">
+            <div class="field"><label>Full Name</label><input type="text" id="inqName" required></div>
+            <div class="field"><label>Email</label><input type="email" id="inqEmail" required></div>
+            <div class="field"><label>Phone</label><input type="tel" id="inqPhone"></div>
+            <div class="field"><label>Message</label><textarea id="inqMessage" required placeholder="I'm interested in this property...">I'm interested in this property, please contact me.</textarea></div>
+            <div class="form-msg" id="inquiryMsg"></div>
+            <button type="submit" class="btn btn-primary btn-block" id="inquiryBtn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark" style="background:rgba(255,255,255,.1);"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg></span>
+          <span class="brand-text-line1" style="color:#fff;">Nestoria</span>
+        </div>
+        <p>Handpicked rental properties matched to your lifestyle and budget.</p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="index.html">Home</a></li><li><a href="listings.html">Listings</a></li><li><a href="favorites.html">Favorites</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="admin.html">Admin Panel</a></li></ul></div>
+      <div><h4>Account</h4><ul><li><a href="login.html">Log In</a></li><li><a href="register.html">Register</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Nestoria. All rights reserved.</span><span>Live Elevated.</span></div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/data.js"></script>
+<script src="js/property-details.js"></script>
+</body>
+</html>

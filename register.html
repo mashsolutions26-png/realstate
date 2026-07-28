@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — Nestoria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-auth-page="true">
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg></span>
+      <span><span class="brand-text-line1">Nestoria</span><br><span class="brand-text-line2">Live Elevated</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="listings.html">Listings</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="nav-actions" id="navAuthSlot" style="gap:10px;"></div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="index.html">Home</a>
+    <a href="listings.html">Listings</a>
+    <a href="favorites.html">Favorites</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div id="mobileAuthSlot" style="display:flex;flex-direction:column;"></div>
+  </div>
+</header>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <h2>Create Your Account</h2>
+    <p>Join Nestoria to save favorites and message agents directly.</p>
+    <div class="form-msg" id="registerMsg"></div>
+    <form id="registerForm">
+      <div class="field"><label>Full Name</label><input type="text" id="regName" required placeholder="Jane Doe"></div>
+      <div class="field"><label>Email</label><input type="email" id="regEmail" required placeholder="you@example.com"></div>
+      <div class="field"><label>Password</label><input type="password" id="regPassword" required placeholder="At least 6 characters"></div>
+      <button type="submit" class="btn btn-primary btn-block" id="registerBtn">Create Account</button>
+    </form>
+    <p class="auth-foot">Already have an account? <a href="login.html">Log in</a></p>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

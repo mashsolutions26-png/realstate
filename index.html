@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nestoria — Discover Spaces That Feel Like Home</title>
+<meta name="description" content="Find handpicked properties for rent that match your lifestyle and budget.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg>
+      </span>
+      <span><span class="brand-text-line1">Nestoria</span><br><span class="brand-text-line2">Live Elevated</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="listings.html">Listings</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="nav-actions" id="navAuthSlot" style="gap:10px;"></div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="index.html">Home</a>
+    <a href="listings.html">Listings</a>
+    <a href="favorites.html">Favorites</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div id="mobileAuthSlot" style="display:flex;flex-direction:column;"></div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-card">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80" alt="Modern glass villa at dusk">
+    <div class="trust-badge">
+      <div class="trust-avatars">
+        <span style="background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80')"></span>
+        <span style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80')"></span>
+        <span style="background-image:url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&q=80')"></span>
+      </div>
+      <small>Trusted by 25K+</small>
+    </div>
+    <div class="hero-content">
+      <h1>Discover Spaces That Feel Like Home</h1>
+      <p>Find handpicked properties for rent that match your lifestyle and budget.</p>
+    </div>
+  </div>
+
+  <form class="search-card" id="heroSearchForm">
+    <div class="search-field">
+      <label>Location</label>
+      <input type="text" id="heroLocation" placeholder="New York, USA">
+    </div>
+    <div class="search-field">
+      <label>Property Type</label>
+      <select id="heroType">
+        <option value="">Any Type</option>
+        <option>House</option>
+        <option>Apartment</option>
+        <option>Villa</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Price Range</label>
+      <select id="heroPrice">
+        <option value="">Any Price</option>
+        <option value="0-2000">Under $2,000</option>
+        <option value="1000-5000">$1000 – $5000</option>
+        <option value="5000-999999">$5,000+</option>
+      </select>
+    </div>
+    <div class="search-submit">
+      <button type="submit" class="btn btn-accent">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        Search
+      </button>
+    </div>
+  </form>
+
+  <div class="container" style="padding:0;">
+    <div class="feature-strip">
+      <div class="feature-item">
+        <div class="feature-icon" style="background:var(--accent-soft);">
+          <svg fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/></svg>
+        </div>
+        <div><h4>Verified Properties</h4><p>All properties are verified for your peace of mind.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon" style="background:var(--accent-soft-4);">
+          <svg fill="none" stroke="#1D5FD6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg>
+        </div>
+        <div><h4>Safe &amp; Secure</h4><p>Your safety is our priority in every transaction.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon" style="background:var(--accent-soft-3);">
+          <svg fill="none" stroke="#146C43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3z"/><path d="M3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg>
+        </div>
+        <div><h4>24/7 Support</h4><p>Our team is here to help you anytime, anywhere.</p></div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon" style="background:var(--accent-soft-2);">
+          <svg fill="none" stroke="#C24E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m12 2 2.2 5.9L20 10l-5.8 2.1L12 18l-2.2-5.9L4 10l5.8-2.1z"/></svg>
+        </div>
+        <div><h4>Best Price Guarantee</h4><p>Get the best deals at the best prices.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROMO SPLIT ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div>
+        <span class="eyebrow">Why Choose Nestoria</span>
+        <h2>More Than Just A Property</h2>
+        <p>We offer more than just spaces. We deliver experiences that fit your life and future.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m4 12 5 5L20 6"/></svg> Wide range of premium rental options</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m4 12 5 5L20 6"/></svg> Flexible rent terms &amp; easy agreements</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m4 12 5 5L20 6"/></svg> Personalized recommendations</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m4 12 5 5L20 6"/></svg> Trusted by thousands of happy clients</li>
+        </ul>
+        <a href="about.html" class="btn btn-primary">Learn More</a>
+      </div>
+      <div class="split-media">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80" alt="Bright modern living room">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FEATURED PROPERTIES ===================== -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head">
+      <h2>Featured Properties</h2>
+      <a href="listings.html" class="view-all">View All Properties →</a>
+    </div>
+    <div class="property-grid" id="featuredGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark" style="background:rgba(255,255,255,.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg>
+          </span>
+          <span class="brand-text-line1" style="color:#fff;">Nestoria</span>
+        </div>
+        <p>Handpicked rental properties matched to your lifestyle and budget, backed by a team that's with you every step.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul><li><a href="index.html">Home</a></li><li><a href="listings.html">Listings</a></li><li><a href="favorites.html">Favorites</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="admin.html">Admin Panel</a></li></ul>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <ul><li><a href="login.html">Log In</a></li><li><a href="register.html">Register</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Nestoria. All rights reserved.</span>
+      <span>Live Elevated.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Firebase (compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/data.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
