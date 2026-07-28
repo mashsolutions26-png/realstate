@@ -65,9 +65,57 @@ function friendlyAuthError(err){
     "auth/user-not-found": "No account found with this email.",
     "auth/wrong-password": "Incorrect password. Please try again.",
     "auth/invalid-credential": "Incorrect email or password.",
-    "auth/weak-password": "Please choose a stronger password (6+ characters)."
+    "auth/weak-password": "Please choose a stronger password (6+ characters).",
+    "auth/popup-closed-by-user": "Sign-in popup was closed before completing.",
+    "auth/popup-blocked": "Your browser blocked the sign-in popup. Please allow popups and try again.",
+    "auth/account-exists-with-different-credential": "An account already exists with this email using a different sign-in method.",
+    "auth/cancelled-popup-request": "Sign-in was cancelled. Please try again."
   };
   return map[err.code] || err.message || "Something went wrong. Please try again.";
+}
+
+/* ---- Google Sign-In (shared by both login & register pages) ---- */
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+async function handleGoogleAuth(btn, msgEl, defaultLabel){
+  if(!btn) return;
+  btn.disabled = true;
+  try{
+    const cred = await auth.signInWithPopup(googleProvider);
+    const userRef = db.collection("users").doc(cred.user.uid);
+    const docSnap = await userRef.get();
+    if(!docSnap.exists){
+      await userRef.set({
+        uid: cred.user.uid,
+        name: cred.user.displayName || "",
+        email: cred.user.email,
+        isAdmin: false,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    }
+    const redirect = getParam("redirect") || "index.html";
+    location.href = redirect;
+  }catch(err){
+    if(msgEl) showFormMsg(msgEl, friendlyAuthError(err), "error");
+    btn.disabled = false;
+    if(defaultLabel) btn.querySelector("span").textContent = defaultLabel;
+  }
+}
+
+const googleLoginBtn = document.getElementById("googleLoginBtn");
+if(googleLoginBtn){
+  googleLoginBtn.addEventListener("click", () => {
+    googleLoginBtn.querySelector("span").textContent = "Signing in...";
+    handleGoogleAuth(googleLoginBtn, document.getElementById("loginMsg"), "Continue with Google");
+  });
+}
+
+const googleRegisterBtn = document.getElementById("googleRegisterBtn");
+if(googleRegisterBtn){
+  googleRegisterBtn.addEventListener("click", () => {
+    googleRegisterBtn.querySelector("span").textContent = "Signing in...";
+    handleGoogleAuth(googleRegisterBtn, document.getElementById("registerMsg"), "Continue with Google");
+  });
 }
 
 /* If an already-logged-in user lands on login/register, send them home */

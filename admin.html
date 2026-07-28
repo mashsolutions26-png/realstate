@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — Nestoria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body style="background:var(--bg);">
+
+<!-- Gate shown while checking auth / if not an admin -->
+<div id="adminGate" style="display:none;"></div>
+
+<!-- Main admin shell -->
+<div class="admin-shell" id="adminShell" style="display:none;">
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="brand">
+      <span class="brand-mark" style="background:rgba(255,255,255,.12);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9.5a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"/></svg>
+      </span>
+      <span class="brand-text-line1">Nestoria</span>
+    </div>
+    <nav class="admin-nav">
+      <a href="#" class="active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        Dashboard
+      </a>
+      <a href="index.html" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+        View Site
+      </a>
+    </nav>
+    <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:14px;">
+      <div style="font-size:12px;color:rgba(255,255,255,.5);padding:0 14px 8px;" id="adminEmail"></div>
+      <button id="adminLogoutBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+        Log Out
+      </button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <button class="hamburger" id="adminHamburger" style="display:none;"><span></span><span></span><span></span></button>
+      <h1>Property Management</h1>
+      <button class="btn btn-primary" id="addPropertyBtn">+ Add Property</button>
+    </div>
+
+    <div class="admin-stats">
+      <div class="stat-card"><span>Total Properties</span><strong id="statTotal">0</strong></div>
+      <div class="stat-card"><span>Featured</span><strong id="statFeatured">0</strong></div>
+      <div class="stat-card"><span>Avg. Price / mo</span><strong id="statAvgPrice">$0</strong></div>
+      <div class="stat-card"><span>Status</span><strong style="color:var(--success);font-size:16px;">● Live</strong></div>
+    </div>
+
+    <div class="admin-panel" style="margin-bottom:28px;">
+      <div class="admin-panel-head"><h3 style="font-size:16px;">All Properties</h3></div>
+      <div style="overflow-x:auto;">
+        <table class="admin-table">
+          <thead><tr><th>Property</th><th>Type</th><th>Price</th><th>Tag</th><th>Actions</th></tr></thead>
+          <tbody id="propertiesTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="admin-panel">
+      <div class="admin-panel-head"><h3 style="font-size:16px;">Recent Inquiries</h3></div>
+      <div style="overflow-x:auto;">
+        <table class="admin-table">
+          <thead><tr><th>From</th><th>Property</th><th>Message</th><th>Phone</th></tr></thead>
+          <tbody id="inquiriesTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Add / Edit property modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modalTitle">Add Property</h3>
+      <button class="modal-close" id="modalCloseBtn">✕</button>
+    </div>
+    <form id="propertyForm">
+      <div class="field"><label>Title</label><input type="text" id="pTitle" required placeholder="Modern Ocean Villa"></div>
+      <div class="form-grid-2">
+        <div class="field"><label>City</label><input type="text" id="pCity" required></div>
+        <div class="field"><label>State</label><input type="text" id="pState" required></div>
+      </div>
+      <div class="form-grid-2">
+        <div class="field"><label>Type</label>
+          <select id="pType"><option>House</option><option>Apartment</option><option>Villa</option></select>
+        </div>
+        <div class="field"><label>Price / month ($)</label><input type="number" id="pPrice" required min="0"></div>
+      </div>
+      <div class="form-grid-2">
+        <div class="field"><label>Bedrooms</label><input type="number" id="pBeds" required min="0"></div>
+        <div class="field"><label>Bathrooms</label><input type="number" id="pBaths" required min="0"></div>
+      </div>
+      <div class="form-grid-2">
+        <div class="field"><label>Area (sqft)</label><input type="number" id="pArea" required min="0"></div>
+        <div class="field"><label>Tag</label>
+          <select id="pTag"><option value="">None</option><option>New</option><option>Hot Deal</option><option>Featured</option></select>
+        </div>
+      </div>
+      <div class="field"><label>Agent Name</label><input type="text" id="pAgentName" placeholder="Sarah Collins"></div>
+      <div class="field">
+        <label><input type="checkbox" id="pFeatured" style="width:auto;display:inline-block;margin-right:6px;"> Show in Featured Properties</label>
+      </div>
+      <div class="field"><label>Image URLs (comma-separated)</label><input type="text" id="pImages" placeholder="https://... , https://..."></div>
+      <div class="field"><label>Or upload an image</label><input type="file" id="pImageFile" accept="image/*"></div>
+      <div class="field"><label>Description</label><textarea id="pDescription" rows="3"></textarea></div>
+      <button type="submit" class="btn btn-primary btn-block" id="savePropertyBtn">Save Property</button>
+    </form>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

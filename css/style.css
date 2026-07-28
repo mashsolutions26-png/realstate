@@ -250,6 +250,18 @@ input,select,textarea{font-family:inherit;font-size:15px;}
 .divider-row{display:flex;align-items:center;gap:12px;margin:20px 0;}
 .divider-row hr{flex:1;border:none;border-top:1px solid var(--border);}
 .divider-row span{font-size:12px;color:var(--muted);}
+.google-btn{gap:10px;}
+.google-btn svg{flex-shrink:0;}
+.google-btn+.apple-btn{margin-top:10px;}
+.apple-btn{gap:10px;position:relative;}
+.apple-btn svg{flex-shrink:0;}
+.apple-btn[disabled]{opacity:1;background:var(--bg);color:var(--muted);cursor:not-allowed;}
+.apple-btn[disabled] svg{color:var(--muted);}
+.soon-badge{
+  font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;
+  background:var(--accent-soft);color:var(--accent-dark);padding:3px 9px;border-radius:var(--radius-pill);
+  margin-left:6px;
+}
 
 /* ==========================================================================
    Listings page
